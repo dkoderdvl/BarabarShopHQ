@@ -1,0 +1,62 @@
+<h2>Visit:</h2>
+<%if @message && @message.length > 0 then %>
+    <p><%=@message%></p>
+<% end %>
+<form action="/visit" method="POST">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control ccc" placeholder="Name" name="client_name" value="<%=@client_name%>">
+  </div>
+  <div class="form-group">
+    <label>Phone</label>
+    <input type="text" class="form-control ccc" placeholder="+7 (***) ***-**-**" name="client_phone"  value="<%=@client_phone%>">
+  </div>
+  <div class="form-group">
+    <label id="aaa">Date - time</label>
+    <input type="text" id="datetimepicker2" name="date_time">
+  </div>
+  <div class="form-group">
+    <label>Stylist</label>
+    <select name="stylist" class="form-control" id="exampleFormControlSelect1">
+      <% @hh[ :stylists ].each do |k,v| %>
+        <%= "<option #{@stylist == "Name: #{v[ :stylist_name ]}, phone: #{v[ :stylist_phone ]}" ? 'selected' : ''}>Name: #{v[ :stylist_name ]}, phone: #{v[ :stylist_phone ]}</option>" %>
+      <% end %>
+    </select>
+  </div>
+
+<script type="text/javascript">
+  $(function(){
+   $('#colorp').simplecolorpicker();
+   $('#datetimepicker2').datetimepicker();
+  })
+</script>
+
+  <div class="form-group">
+    <label>color:</label>
+    <select name="colorpicker" id="colorp">
+      <option value="#7bd148" <%= @colorpicker == '#7bd148' ? 'selected' : '' %> >Green</option>
+      <option value="#5484ed" <%= @colorpicker == '#5484ed' ? 'selected' : '' %> >Bold blue</option>
+      <option value="#a4bdfc" <%= @colorpicker == '#a4bdfc' ? 'selected' : '' %> >Blue</option>
+      <option value="#46d6db" <%= @colorpicker == '#46d6db' ? 'selected' : '' %> >Turquoise</option>
+      <option value="#7ae7bf" <%= @colorpicker == '#7ae7bf' ? 'selected' : '' %> >Light green</option>
+      <option value="#51b749" <%= @colorpicker == '#51b749' ? 'selected' : '' %> >Bold green</option>
+      <option value="#fbd75b" <%= @colorpicker == '#fbd75b' ? 'selected' : '' %> >Yellow</option>
+      <option value="#ffb878" <%= @colorpicker == '#ffb878' ? 'selected' : '' %> >Orange</option>
+      <option value="#ff887c" <%= @colorpicker == '#ff887c' ? 'selected' : '' %> >Red</option>
+      <option value="#dc2127" <%= @colorpicker == '#dc2127' ? 'selected' : '' %> >Bold red</option>
+      <option value="#dbadff" <%= @colorpicker == '#dbadff' ? 'selected' : '' %> >Purple</option>
+      <option value="#e1e1e1" <%= @colorpicker == '#e1e1e1' ? 'selected' : '' %> >Gray</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Visit</button>
+</form>
+
+
+
+<script type="text/javascript">
+  $('#aaa').css('background-color', '#DAFBEB');
+  $('.ccc').css('background-color', '#E6E6FA');
+</script>
+
+

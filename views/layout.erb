@@ -21,6 +21,11 @@
     </header>
     <div class="container">
       <div>
+        <%if @message && @message.length > 0 then %>
+          <div class="alert alert-success" role="alert">
+            <%=@message%>
+          </div>        
+        <% end %>
         <%if @error && @error.length > 0 then %>
           <div class="alert alert-danger"><%=@error%></div>
         <% end %>
