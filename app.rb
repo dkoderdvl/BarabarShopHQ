@@ -7,15 +7,23 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:barbarshop.db"
 
 class Client < ActiveRecord::Base
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :phone, uniqueness: true
 end
 
 class Barber < ActiveRecord::Base
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :phone, uniqueness: true 
 end
 
 class Visit < ActiveRecord::Base
 end
 
-
+before do
+  @barbers = Barber.order 'name ASC'
+end
 
 get '/' do
   erb 'Hi!'
@@ -29,28 +37,36 @@ get '/admin' do
 end
 
 post '/admin' do
-  barber_name = params[:barber_name]
-  barber_phone = params[:barber_phone]
+  #~ barber_name = params[:barber_name]
+  #~ barber_phone = params[:barber_phone]
   
   # TODO Тут нужна валидация
-  
-  @barbers = Barber.order 'name ASC'
   @visits = Visit.all
   
-  barber = Barber.find_or_initialize_by phone: barber_phone
-  if barber.persisted? && barber.name != barber_name
-    @error = "OOOPs!!! A barber with this phone number #{barber_phone} is already there. This is #{barber.name}."
-    @barbers = Barber.order 'name ASC'
+  b = Barber.new params[:barber]
+  if b.invalid?
+    @error = b.errors.full_messages.join ', '
     return erb :admin
   end
+  b.save
   
-  if barber.new_record?
-    barber.name = barber_name 
-    barber.phone = barber_phone
-    barber.save
+  
+  #if c.errors.count > 0
+  
+  #~ barber = Barber.find_or_initialize_by phone: barber_phone
+  #~ if barber.persisted? && barber.name != barber_name
+    #~ @error = "OOOPs!!! A barber with this phone number #{barber_phone} is already there. This is #{barber.name}."
+    #~ @barbers = Barber.order 'name ASC'
+    #~ return erb :admin
+  #~ end
+  
+  #~ if barber.new_record?
+    #~ barber.name = barber_name 
+    #~ barber.phone = barber_phone
+    #~ barber.save
     
-    @message = "New barber added. Name: #{barber.name}, phone: #{barber.phone}"
-  end
+    #~ @message = "New barber added. Name: #{barber.name}, phone: #{barber.phone}"
+  #~ end
   
  erb :admin
 end
@@ -111,6 +127,4 @@ post '/visit' do
   
   erb :visit
 end
-
-
 
