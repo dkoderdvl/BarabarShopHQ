@@ -1,35 +1,33 @@
 <h2>Visit:</h2>
-<%if @message && @message.length > 0 then %>
-    <p><%=@message%></p>
-<% end %>
 <form action="/visit" method="POST">
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control ccc" placeholder="Name" name="client_name" value="<%=@client_name%>">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Name</span>
+    </div>
+    <input type="text" name="client_name" value="<%=@client_name%>" placeholder="Name" aria-label="Client name" class="form-control" aria-describedby="basic-addon1">
   </div>
-  <div class="form-group">
-    <label>Phone</label>
-    <input type="text" class="form-control ccc" placeholder="+7 (***) ***-**-**" name="client_phone"  value="<%=@client_phone%>">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Phone</span>
+    </div>
+    <input type="text" name="client_phone" value="<%=@client_phone%>" placeholder="+7 (***) ***-**-**" aria-label="Client phone" class="form-control" aria-describedby="basic-addon1">
   </div>
-  <div class="form-group">
-    <label id="aaa">Date - time</label>
-    <input type="text" id="datetimepicker2" name="date_time">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Date - time</span>
+    </div>
+    <input type="text" name="date_time" id="datetimepicker" aria-label="Date - time" class="form-control" aria-describedby="basic-addon1">
   </div>
-  <div class="form-group">
-    <label>Stylist</label>
-    <select name="stylist" class="form-control" id="exampleFormControlSelect1">
-      <% @hh[ :stylists ].each do |k,v| %>
-        <%= "<option #{@stylist == "Name: #{v[ :stylist_name ]}, phone: #{v[ :stylist_phone ]}" ? 'selected' : ''}>Name: #{v[ :stylist_name ]}, phone: #{v[ :stylist_phone ]}</option>" %>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Barber</label>
+    </div>
+    <select name="barber_id" class="custom-select" id="inputGroupSelect01">
+      <% @barbers.each do |barber| %>
+        <%= "<option #{@barber_id == barber.id ? 'selected' : ''} value=\"#{barber.id}\">Name: #{barber.name}, phone: #{barber.phone}</option>" %>
       <% end %>
     </select>
   </div>
-
-<script type="text/javascript">
-  $(function(){
-   $('#colorp').simplecolorpicker();
-   $('#datetimepicker2').datetimepicker();
-  })
-</script>
 
   <div class="form-group">
     <label>color:</label>
@@ -48,6 +46,13 @@
       <option value="#e1e1e1" <%= @colorpicker == '#e1e1e1' ? 'selected' : '' %> >Gray</option>
     </select>
   </div>
+
+  <script type="text/javascript">
+    $(function(){
+     $('#colorp').simplecolorpicker();
+     $('#datetimepicker').datetimepicker();
+    })
+  </script>
 
   <button type="submit" class="btn btn-primary">Visit</button>
 </form>

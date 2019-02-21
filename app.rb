@@ -47,8 +47,27 @@ post '/admin' do
   if barber.new_record?
     barber.name = barber_name 
     barber.phone = barber_phone
-    barber.save 
+    barber.save
+    
+    @message = "New barber added. Name: #{barber.name}, phone: #{barber.phone}"
   end
   
  erb :admin
 end
+
+get '/visit' do
+  @barber_id = 0
+  @barbers = Barber.order 'name ASC'
+  
+  erb :visit
+end
+
+post '/visit' do
+  @barber_id = 0
+  @barbers = Barber.order 'name ASC'
+  
+  erb :visit
+end
+
+
+
