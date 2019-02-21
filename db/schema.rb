@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_095252) do
     t.integer "client_id"
     t.integer "barber_id"
     t.text "date_time"
+    t.text "colorpicker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

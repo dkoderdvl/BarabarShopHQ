@@ -4,6 +4,7 @@ class CreateVisits < ActiveRecord::Migration[5.2]
       t.integer :client_id
       t.integer :barber_id
       t.text :date_time
+      t.text :colorpicker
       
       t.timestamps
     end
