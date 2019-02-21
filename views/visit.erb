@@ -16,7 +16,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Date - time</span>
     </div>
-    <input type="text" name="date_time" id="datetimepicker" aria-label="Date - time" class="form-control" aria-describedby="basic-addon1">
+    <input type="text" name="date_time" value="<%=@date_time%>" id="datetimepicker" aria-label="Date - time" class="form-control" aria-describedby="basic-addon1">
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -24,7 +24,7 @@
     </div>
     <select name="barber_id" class="custom-select" id="inputGroupSelect01">
       <% @barbers.each do |barber| %>
-        <%= "<option #{@barber_id == barber.id ? 'selected' : ''} value=\"#{barber.id}\">Name: #{barber.name}, phone: #{barber.phone}</option>" %>
+        <%= "<option #{@barber_id.to_s == barber.id.to_s ? 'selected' : ''} value=\"#{barber.id}\">Name: #{barber.name}, phone: #{barber.phone}</option>" %>
       <% end %>
     </select>
   </div>

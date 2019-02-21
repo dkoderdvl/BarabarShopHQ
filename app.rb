@@ -63,8 +63,51 @@ get '/visit' do
 end
 
 post '/visit' do
-  @barber_id = 0
+  @barber_id = params[:barber_id]
+  @client_name = params[:client_name]
+  @client_phone = params[:client_phone]
+  @date_time = params[:date_time]
+  @colorpicker = params[:colorpicker]
+  
+  h_invalid = {
+    :client_name => 'Enter your name',
+    :client_phone => 'Enter your pone',
+    :date_time => 'Enter date - time'
+    }
+  @error = h_invalid.select{|k,v| params[k].strip == ''}.values.join ', '
+  unless @error == ''
+  @error += @barber_id.to_s
+    @barbers = Barber.order 'name ASC'
+    return erb :visit
+  end
+  
+  client = Client.find_or_initialize_by :phone => @client_phone 
+  if client.persisted? && client.name != @client_name  
+    @error = "This phone number: #{@client_phone} belongs another user"
+    @barbers = Barber.order 'name ASC'
+    return erb :visit
+  end
+  
+  if client.new_record?
+    client.name = @client_name
+    client.phone = @client_phone
+    client.save
+  end 
+  
+  visit = Visit.create  :client_id => client.id,
+                        :barber_id => @barber_id,
+                        :date_time => @date_time
+                        
+  barber = Barber.find @barber_id
+  
+  @message = "Dear #{client.name} we'll waiting for you at #{@date_time} to barber #{barber.name}. You may contact phone: #{barber.phone}"
   @barbers = Barber.order 'name ASC'
+  
+  @barber_id = 0
+  @client_name = ''
+  @client_phone = ''
+  @date_time = ''
+  @colorpicker = ''
   
   erb :visit
 end
