@@ -4,19 +4,19 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Name</span>
     </div>
-    <input type="text" name="client[name]" value="<%=@client_name%>" placeholder="Name" aria-label="Client name" class="form-control" aria-describedby="basic-addon1">
+    <input type="text" name="client[name]" value="<%=@client.name%>" placeholder="Name" aria-label="Client name" class="form-control" aria-describedby="basic-addon1">
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Phone</span>
     </div>
-    <input type="text" name="client[phone]" value="<%=@client_phone%>" placeholder="+7 (***) ***-**-**" aria-label="Client phone" class="form-control" aria-describedby="basic-addon1">
+    <input type="text" name="client[phone]" value="<%=@client.phone%>" placeholder="+7 (***) ***-**-**" aria-label="Client phone" class="form-control" aria-describedby="basic-addon1">
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Date - time</span>
     </div>
-    <input type="text" name="visit[date_time]" value="<%=@date_time%>" id="datetimepicker" aria-label="Date - time" class="form-control" aria-describedby="basic-addon1">
+    <input type="text" name="visit[date_time]" value="<%=@visit.date_time%>" id="datetimepicker" aria-label="Date - time" class="form-control" aria-describedby="basic-addon1">
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -24,7 +24,7 @@
     </div>
     <select name="visit[barber_id]" class="custom-select" id="inputGroupSelect01">
       <% @barbers.each do |barber| %>
-        <%= "<option #{@barber_id.to_s == barber.id.to_s ? 'selected' : ''} value=\"#{barber.id}\">Name: #{barber.name}, phone: #{barber.phone}</option>" %>
+        <%= "<option #{@visit.barber_id.to_s == barber.id.to_s ? 'selected' : ''} value=\"#{barber.id}\">Name: #{barber.name}, phone: #{barber.phone}</option>" %>
       <% end %>
     </select>
   </div>
@@ -32,18 +32,18 @@
   <div class="form-group">
     <label>color:</label>
     <select name="visit[colorpicker]" id="colorp">
-      <option value="#7bd148" <%= @colorpicker == '#7bd148' ? 'selected' : '' %> >Green</option>
-      <option value="#5484ed" <%= @colorpicker == '#5484ed' ? 'selected' : '' %> >Bold blue</option>
-      <option value="#a4bdfc" <%= @colorpicker == '#a4bdfc' ? 'selected' : '' %> >Blue</option>
-      <option value="#46d6db" <%= @colorpicker == '#46d6db' ? 'selected' : '' %> >Turquoise</option>
-      <option value="#7ae7bf" <%= @colorpicker == '#7ae7bf' ? 'selected' : '' %> >Light green</option>
-      <option value="#51b749" <%= @colorpicker == '#51b749' ? 'selected' : '' %> >Bold green</option>
-      <option value="#fbd75b" <%= @colorpicker == '#fbd75b' ? 'selected' : '' %> >Yellow</option>
-      <option value="#ffb878" <%= @colorpicker == '#ffb878' ? 'selected' : '' %> >Orange</option>
-      <option value="#ff887c" <%= @colorpicker == '#ff887c' ? 'selected' : '' %> >Red</option>
-      <option value="#dc2127" <%= @colorpicker == '#dc2127' ? 'selected' : '' %> >Bold red</option>
-      <option value="#dbadff" <%= @colorpicker == '#dbadff' ? 'selected' : '' %> >Purple</option>
-      <option value="#e1e1e1" <%= @colorpicker == '#e1e1e1' ? 'selected' : '' %> >Gray</option>
+      <option value="#7bd148" <%= @visit.colorpicker == '#7bd148' ? 'selected' : '' %> >Green</option>
+      <option value="#5484ed" <%= @visit.colorpicker == '#5484ed' ? 'selected' : '' %> >Bold blue</option>
+      <option value="#a4bdfc" <%= @visit.colorpicker == '#a4bdfc' ? 'selected' : '' %> >Blue</option>
+      <option value="#46d6db" <%= @visit.colorpicker == '#46d6db' ? 'selected' : '' %> >Turquoise</option>
+      <option value="#7ae7bf" <%= @visit.colorpicker == '#7ae7bf' ? 'selected' : '' %> >Light green</option>
+      <option value="#51b749" <%= @visit.colorpicker == '#51b749' ? 'selected' : '' %> >Bold green</option>
+      <option value="#fbd75b" <%= @visit.colorpicker == '#fbd75b' ? 'selected' : '' %> >Yellow</option>
+      <option value="#ffb878" <%= @visit.colorpicker == '#ffb878' ? 'selected' : '' %> >Orange</option>
+      <option value="#ff887c" <%= @visit.colorpicker == '#ff887c' ? 'selected' : '' %> >Red</option>
+      <option value="#dc2127" <%= @visit.colorpicker == '#dc2127' ? 'selected' : '' %> >Bold red</option>
+      <option value="#dbadff" <%= @visit.colorpicker == '#dbadff' ? 'selected' : '' %> >Purple</option>
+      <option value="#e1e1e1" <%= @visit.colorpicker == '#e1e1e1' ? 'selected' : '' %> >Gray</option>
     </select>
   </div>
 

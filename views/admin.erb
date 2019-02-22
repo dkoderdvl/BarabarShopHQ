@@ -37,13 +37,13 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Name</span>
           </div>
-          <input type="text" name="barber[name]" class="form-control" placeholder="Name" aria-label="Barber name" aria-describedby="basic-addon1">
+          <input type="text" name="barber[name]" value="<%=@b.name%>" placeholder="Name" class="form-control" aria-label="Barber name" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Phone</span>
           </div>
-          <input type="text" name="barber[phone]" class="form-control" placeholder="+7 (***) ***-**-**" aria-label="Barber phone" aria-describedby="basic-addon1">
+          <input type="text" name="barber[phone]" value="<%=@b.phone%>" class="form-control" placeholder="+7 (***) ***-**-**" aria-label="Barber phone" aria-describedby="basic-addon1">
         </div>
         <button type="submit" class="btn btn-primary">Add barber</button>
       </form>
