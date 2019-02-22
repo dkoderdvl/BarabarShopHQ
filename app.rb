@@ -91,3 +91,9 @@ get '/barber/:id' do
   @barber = Barber.find params[:id]
   erb :barberinfo
 end
+
+get '/clients' do
+  @clients = Client.order 'name'
+
+  erb :clients
+end

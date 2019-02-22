@@ -18,14 +18,14 @@
           <% @visits.each do |visit| %>
             <% visit_client = Client.find visit.client_id %>
             <% visit_barber = Barber.find visit.barber_id %>
-            <%= '<tr>' %>
-              <%= "<td>#{visit_client.name}</td>" %>
-              <%= "<td>#{visit_client.phone}</td>" %>
-              <%= "<td>#{visit.date_time}</td>" %>
-              <%= "<td>#{visit_barber.name}</td>" %>
-              <%= "<td>#{visit_barber.phone}</td>" %>
-              <%= "<td style=\"background-color: #{visit.colorpicker}\">#{visit.colorpicker}</td>" %>
-            <%= '</tr>' %>
+            <tr>
+              <td><%=visit_client.name%></td>
+              <td><%=visit_client.phone%></td>
+              <td><%=visit.date_time%></td>
+              <td><%=visit_barber.name%></td>
+              <td><%=visit_barber.phone%></td>
+              <td style="background-color: <%=visit.colorpicker%>"><%=visit.colorpicker%></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
@@ -60,10 +60,10 @@
         </thead>
         <tbody>
           <% @barbers.each do |barber| %>
-            <%= '<tr>' %>
-              <%= "<td>#{barber.name}</td>" %>
-              <%= "<td>#{barber.phone}</td>" %>
-            <%= '</tr>' %>
+            <tr>
+              <td><%=barber.name%></td>
+              <td><%=barber.phone%></td>
+            </tr>
           <% end %>
         </tbody>
       </table>

@@ -1,0 +1,19 @@
+      <h2>
+        <span class="bd-content-title">List clients:<a class="anchorjs-link " href="#basic-example" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></span>
+      </h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clients.each do |client| %>
+            <tr>
+              <td><%=client.name%></td>
+              <td><%=client.phone%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>

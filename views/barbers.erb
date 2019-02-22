@@ -10,10 +10,10 @@
         </thead>
         <tbody>
           <% @barbers.each do |barber| %>
-            <%= '<tr>' %>
+            <tr>
               <td><a href="/barber/<%=barber.id%>"><%=barber.name %></a></td>
-              <%= "<td>#{barber.phone}</td>" %>
-            <%= '</tr>' %>
+              <td><%=barber.phone%></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
