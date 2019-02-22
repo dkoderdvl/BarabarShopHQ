@@ -1,24 +1,19 @@
-<h2>List barbers:</h2>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Phone</th>
-      <th scope="col">created_at</th>
-      <th scope="col">updated_at</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @barbers.each do |barber| %>
-      <%= '<tr>' %>
-        <%= "<td>#{barber.name}</td>" %>
-        <%= "<td>#{barber.phone}</td>" %>
-        <%= "<td>#{barber.created_at}</td>" %>
-        <%= "<td>#{barber.updated_at}</td>" %>
-      <%= '</tr>' %>
-    <% end %>
-  </tbody>
-</table>
-
-
+      <h2>
+        <span class="bd-content-title">List barbers:<a class="anchorjs-link " href="#basic-example" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></span>
+      </h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @barbers.each do |barber| %>
+            <%= '<tr>' %>
+              <td><a href="/barber/<%=barber.id%>"><%=barber.name %></a></td>
+              <%= "<td>#{barber.phone}</td>" %>
+            <%= '</tr>' %>
+          <% end %>
+        </tbody>
+      </table>

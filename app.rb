@@ -25,7 +25,8 @@ before do
 end
 
 get '/' do
-  erb 'Hi!'
+  @barbers = Barber.order 'name'
+  erb :barbers
 end
 
 get '/admin' do
