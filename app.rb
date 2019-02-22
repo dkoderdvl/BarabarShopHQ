@@ -86,3 +86,8 @@ post '/visit' do
   @message = "Dear #{@client.name} we'll waiting for you at #{@date_time} to barber #{barber.name}. You may contact phone: #{barber.phone}"
   erb :visit
 end
+
+get '/barber/:id' do  
+  @barber = Barber.find params[:id]
+  erb :barberinfo
+end
