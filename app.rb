@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
-#require 'sqlite3'
 
 set :database, "sqlite3:barbarshop.db"
 
@@ -45,7 +44,6 @@ post '/admin' do
     return erb :admin
   end
   
-  
   erb :admin
 end
 
@@ -87,4 +85,3 @@ post '/visit' do
   @message = "Dear #{@client.name} we'll waiting for you at #{@date_time} to barber #{barber.name}. You may contact phone: #{barber.phone}"
   erb :visit
 end
-
